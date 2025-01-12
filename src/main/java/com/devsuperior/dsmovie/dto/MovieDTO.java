@@ -17,20 +17,23 @@ public class MovieDTO {
 	private static final DecimalFormat df = new DecimalFormat("#.##", new DecimalFormatSymbols(Locale.US));
 
 	private Long id;
-	
+
 	@NotBlank(message = "Required field")
 	@Size(min = 5, max = 80, message = "Title must be between 5 and 80 characters")
 	private String title;
-	
+
 	@PositiveOrZero(message = "Score should be greater than or equal to zero")
 	private Double score;
-	
+
 	@PositiveOrZero(message = "Count should be greater than or equal to zero")
 	private Integer count;
-	
+
 	@NotBlank(message = "Required field")
 	@URL(message = "Field must be a valid url")
 	private String image;
+
+	public MovieDTO() {
+	}
 
 	public MovieDTO(Long id, String title, Double score, Integer count, String image) {
 		this.id = id;
@@ -55,7 +58,7 @@ public class MovieDTO {
 	public Double getScore() {
 		return score;
 	}
-	
+
 	public Integer getCount() {
 		return count;
 	}

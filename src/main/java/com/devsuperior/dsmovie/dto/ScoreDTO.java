@@ -11,7 +11,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 
 public class ScoreDTO {
-	
+
 	private static final DecimalFormat df = new DecimalFormat("#.##", new DecimalFormatSymbols(Locale.US));
 
 	@NotNull(message = "Required field")
@@ -21,16 +21,19 @@ public class ScoreDTO {
 	@Max(value = 5, message = "Score should not be greater than five")
 	private Double score;
 
+	public ScoreDTO() {
+	}
+
 	public ScoreDTO(Long movieId, Double score) {
 		this.movieId = movieId;
 		this.score = Double.valueOf(df.format(score));
 	}
-	
+
 	public ScoreDTO(ScoreEntity score) {
 		this.movieId = score.getId().getMovie().getId();
 		this.score = Double.valueOf(df.format(score.getValue()));
 	}
-	
+
 	public Long getMovieId() {
 		return movieId;
 	}
